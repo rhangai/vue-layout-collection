@@ -1,0 +1,13 @@
+{
+  "name": "@rhangai/vue-layout-collection",
+  "version": "0.0.0",
+  "description": "Multiple Layout Components for Vue.js",
+  "main": "dist/vue-layout-collection.js",
+  "repository": "git@github.com:rhangai/vue-layout-collection.git",
+  "author": "rhangai <hangai.renan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
