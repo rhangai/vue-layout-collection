@@ -1,13 +1,37 @@
 {
-  "name": "@rhangai/vue-layout-collection",
-  "version": "0.0.0",
-  "description": "Multiple Layout Components for Vue.js",
-  "main": "dist/vue-layout-collection.js",
-  "repository": "git@github.com:rhangai/vue-layout-collection.git",
-  "author": "rhangai <hangai.renan@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
-  }
+	"name": "@rhangai/vue-layout-collection",
+	"version": "0.0.0",
+	"description": "Multiple Layout Components for Vue.js",
+	"main": "layout/index.umd.js",
+	"module": "layout/index.js",
+	"repository": "git@github.com:rhangai/vue-layout-collection.git",
+	"author": "rhangai <hangai.renan@gmail.com>",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"@rollup/plugin-alias": "^3.0.1",
+		"@rollup/plugin-commonjs": "^11.0.2",
+		"@rollup/plugin-node-resolve": "^7.1.1",
+		"@rollup/plugin-typescript": "^4.0.0",
+		"@rollup/plugin-virtual": "^2.0.1",
+		"npm-run-all": "^4.1.5",
+		"pascal-case": "^3.1.1",
+		"pug": "^2.0.4",
+		"rimraf": "^3.0.2",
+		"rollup": "^2.0.0",
+		"rollup-plugin-terser": "^5.2.0",
+		"rollup-plugin-typescript2": "^0.26.0",
+		"rollup-plugin-vue": "^5.1.6",
+		"tslib": "^1.11.1",
+		"typescript": "^3.8.3",
+		"vue": "^2.6.11",
+		"vue-class-component": "^7.2.3",
+		"vue-template-compiler": "^2.6.11"
+	},
+	"scripts": {
+		"prebuild": "run-s clean",
+		"build": "rollup -c rollup.config.js",
+		"clean": "rimraf layout",
+		"prepack": "run-s build"
+	}
 }

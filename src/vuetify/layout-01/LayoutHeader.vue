@@ -1,17 +1,10 @@
 <template lang="pug">
-	div 
-		span Oi
-		layout-header
+	div Oi
 </template>
 <script lang="ts">
 import { Vue, Component } from "@common/component";
-import LayoutHeader from "./LayoutHeader.vue";
 
-@Component({
-	components: {
-		LayoutHeader
-	}
-})
+@Component({})
 export default class Layout extends Vue {
 	style = { color: "red" };
 }
