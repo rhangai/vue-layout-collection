@@ -13,6 +13,14 @@ const LAYOUTS = [
 	"vuetify/layout-01"
 ];
 
+const EXTERNALS = ["vue", "vuetify/lib", "vuetify/lib/directives"];
+
+const GLOBALS = {
+	vue: "Vue",
+	"vuetify/lib": "Vuetify",
+	"vuetify/lib/directives": "Vuefity"
+};
+
 const plugins = () => [
 	//
 	alias({
@@ -44,11 +52,12 @@ function generateConfigModule(env, input, output, name, extraPlugins) {
 	}
 	return {
 		input: input,
-		external: ["vue", "vue-class-component"],
+		external: ["vue-class-component", ...EXTERNALS],
 		output: {
 			name: name,
 			file: output,
-			format: "esm"
+			format: "esm",
+			globals: { ...GLOBALS }
 		},
 		plugins: [
 			// Default plugins
@@ -67,14 +76,12 @@ function generateConfigUMD(env, input, output, name, extraPlugins = null) {
 	}
 	return {
 		input,
-		external: ["vue"],
+		external: ["vue", ...EXTERNALS],
 		output: {
 			name: name,
 			file: output,
 			format: "umd",
-			globals: {
-				vue: "Vue"
-			}
+			globals: { ...GLOBALS }
 		},
 		plugins: [
 			// Plugins

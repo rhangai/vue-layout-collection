@@ -1,11 +1,36 @@
 <template lang="pug">
-	div Oi
+v-app-bar.layout-header(app fixed)
+	layout-header-info(:title="title" :breadcrumbs="breadcrumbs")
+	v-spacer
+	.layout-header__actions
+		slot(name="actions")
 </template>
 <script lang="ts">
-import { Vue, Component } from "@common/component";
+import { Component, Vue } from "@common/component";
+import { VAppBar, VSpacer, VBtn, VAvatar, VIcon } from "vuetify/lib";
+import LayoutHeaderInfo from "./LayoutHeaderInfo.vue";
 
-@Component({})
-export default class Layout extends Vue {
-	style = { color: "red" };
-}
+@Component({
+	components: {
+		LayoutHeaderInfo,
+		VAppBar,
+		VSpacer,
+		VBtn,
+		VAvatar,
+		VIcon
+	},
+	props: {
+		title: {
+			type: String,
+			default: ""
+		},
+		breadcrumbs: {
+			type: Array,
+			default: () => []
+		}
+	}
+})
+export default class LayoutHeader extends Vue {}
 </script>
+<style lang="scss" scoped>
+</style>

@@ -3,12 +3,13 @@
 		"strict": true,
 		"module": "es2015",
 		"moduleResolution": "node",
-		"target": "es2019",
+		"target": "es2015",
 		"experimentalDecorators": true,
 		"rootDir": "./",
 		"baseUrl": "src",
 		"paths": {
 			"@common/*": ["./common/*"]
-		}
+		},
+		"types": ["vuetify/types/lib"]
 	}
 }
