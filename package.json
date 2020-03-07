@@ -14,6 +14,9 @@
 		"@rollup/plugin-node-resolve": "^7.1.1",
 		"@rollup/plugin-typescript": "^4.0.0",
 		"@rollup/plugin-virtual": "^2.0.1",
+		"execa": "^4.0.0",
+		"gulp": "^4.0.2",
+		"gulp-rename": "^2.0.0",
 		"npm-run-all": "^4.1.5",
 		"pascal-case": "^3.1.1",
 		"pug": "^2.0.4",
@@ -32,7 +35,7 @@
 	},
 	"scripts": {
 		"prebuild": "run-s clean",
-		"build": "rollup -c rollup.config.js",
+		"build": "gulp build",
 		"clean": "rimraf layout",
 		"prepack": "run-s build"
 	}

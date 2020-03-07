@@ -16,7 +16,7 @@ import { VApp, VContent, VContainer } from "vuetify/lib";
 import { Scroll } from "vuetify/lib/directives";
 import LayoutHeader from "./LayoutHeader.vue";
 import LayoutDrawer from "./LayoutDrawer.vue";
-import { LayoutMenuItem, LayoutBreadcrumbItem } from "./LayoutOptions";
+import { LayoutMenuItem, LayoutBreadcrumbItem } from "./index.d";
 
 @Component<Layout>({
 	components: {

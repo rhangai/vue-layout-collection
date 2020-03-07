@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Vue } from "@common/component";
 import { VIcon, VBreadcrumbs } from "vuetify/lib";
-import { LayoutBreadcrumbItem } from "./LayoutOptions";
+import { LayoutBreadcrumbItem } from "./index.d";
 
 @Component({
 	components: {

@@ -20,7 +20,7 @@ v-hover(v-slot:default="{ hover }" close-delay="400")
 			layout-drawer-menu-item(:item="itemLogout")
 </template>
 <script lang="ts">
-import { LayoutMenuItem } from "./LayoutOptions";
+import { LayoutMenuItem } from "./index.d";
 import LayoutDrawerMenuItem from "./LayoutDrawerMenuItem.vue";
 import { Component, Vue } from "@common/component";
 import {

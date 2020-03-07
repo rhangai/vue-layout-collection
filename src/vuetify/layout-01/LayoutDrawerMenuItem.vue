@@ -21,7 +21,7 @@ import {
 	VListItemTitle,
 	VIcon
 } from "vuetify/lib";
-import { LayoutMenuItem } from "./LayoutOptions";
+import { LayoutMenuItem } from "./index.d";
 
 @Component({
 	name: "layout-drawer-menu-item",

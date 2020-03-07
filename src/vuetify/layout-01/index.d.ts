@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 export interface LayoutOptions {
 	title?: string;
 	breadcrumbs?: LayoutBreadcrumbItem[];
@@ -16,3 +18,5 @@ export interface LayoutMenuItem {
 	href?: string;
 	children?: LayoutMenuItem[];
 }
+
+export const Layout: Vue;
