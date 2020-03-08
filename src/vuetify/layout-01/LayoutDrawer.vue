@@ -7,7 +7,7 @@ v-hover(v-slot:default="{ hover }" close-delay="400")
 		permanent
 		app)
 		.layout-drawer__top
-			slot(name="top")
+			slot(name="top" :mini="hover ? false : miniVariant")
 			v-btn.layout-drawer__pin-button(icon small @click="miniVariant = !miniVariant")
 				v-icon(small) {{ miniVariant ? 'mdi-pin' : 'mdi-pin-off' }}
 		v-divider
@@ -109,6 +109,7 @@ export default class LayoutDrawer extends Vue {
 .layout-drawer__top {
 	position: relative;
 	min-height: 56px;
+	width: 256px;
 }
 
 .layout-drawer__pin-button {
