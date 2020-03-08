@@ -2,6 +2,8 @@
 v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 	layout-manager-container(:layout-manager="layoutManager")
 	layout-drawer(v-bind="normalizedOptions.drawer")
+		template(v-slot:top="")
+			slot(name="drawer-top")
 	layout-header(v-bind="normalizedOptions.header")
 		template(v-slot:actions="")
 			slot(name="header-actions")
@@ -72,6 +74,7 @@ export default class Layout extends Vue {
 
 	get classes() {
 		return {
+			"layout--is-not-scrolled": !this.isScrolled,
 			"layout--is-scrolled": this.isScrolled
 		};
 	}

@@ -6,14 +6,12 @@ v-hover(v-slot:default="{ hover }" close-delay="400")
 		:color="color"
 		permanent
 		app)
+		.layout-drawer__top
+			slot(name="top")
+			v-btn.layout-drawer__pin-button(icon small @click="miniVariant = !miniVariant")
+				v-icon(small) {{ miniVariant ? 'mdi-pin' : 'mdi-pin-off' }}
+		v-divider
 		v-list
-			v-list-item
-				v-list-item-icon: v-icon(style="visibility: hidden") mdi-home
-				v-list-item-content &nbsp;
-				v-list-item-action
-					v-btn.layout-drawer__botao-ativar(icon small @click="miniVariant = !miniVariant")
-						v-icon(small) {{ miniVariant ? 'mdi-pin' : 'mdi-pin-off' }}
-			v-divider
 			template(v-for="(item, i) in items")
 				layout-drawer-menu-item(:item="item" :key="i")
 		v-spacer
@@ -82,27 +80,40 @@ export default class LayoutDrawer extends Vue {
 		flex-direction: column;
 	}
 
+	.v-list-group__header {
+		color: inherit;
+	}
+
 	.v-list-group__items {
 		background-color: rgba(#222, 0.9);
 	}
 
-	.layout-drawer-menu-item.layout-drawer-menu-item--level-2 {
-		> .v-list-item {
-			padding-left: 3rem;
+	@mixin set-item-padding($index, $padding) {
+		.layout-drawer-menu-item.layout-drawer-menu-item--level-#{$index}
+			> .v-list-item {
+			padding-left: $padding;
 			transition: padding-left 0.15s;
 		}
-	}
-
-	&.v-navigation-drawer--mini-variant {
-		.layout-drawer-menu-item.layout-drawer-menu-item--level-2 {
-			> .v-list-item {
+		&.v-navigation-drawer--mini-variant {
+			.layout-drawer-menu-item.layout-drawer-menu-item--level-#{$index}
+				> .v-list-item {
 				padding-left: 1rem;
 			}
 		}
 	}
 
-	.v-list-group__header {
-		color: inherit;
-	}
+	@include set-item-padding(2, 3rem);
+	@include set-item-padding(3, 4.5rem);
+}
+
+.layout-drawer__top {
+	position: relative;
+	min-height: 56px;
+}
+
+.layout-drawer__pin-button {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
 }
 </style>
