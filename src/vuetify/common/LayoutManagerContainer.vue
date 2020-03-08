@@ -2,7 +2,7 @@
 div
 	template(v-for="snackbar in snackbars")
 		v-snackbar(
-			:key="snackbar.id" 
+			:key="`snack-${snackbar.id}`" 
 			v-model="snackbar.visible"
 			@input="snackbar.onInput"
 			v-bind="snackbar.item.$props"
@@ -12,7 +12,7 @@ div
 
 	template(v-for="dialog in dialogs")
 		v-dialog(
-			:key="dialog.id" 
+			:key="`dialog-${dialog.id}`" 
 			v-model="dialog.visible" 
 			@input="dialog.onInput"
 			persistent
