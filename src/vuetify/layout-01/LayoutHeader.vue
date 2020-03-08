@@ -1,5 +1,5 @@
 <template lang="pug">
-v-app-bar.layout-header(app fixed)
+v-app-bar.layout-header(app fixed :color="color || 'transparent'")
 	layout-header-info(:title="title" :breadcrumbs="breadcrumbs")
 	v-spacer
 	.layout-header__actions
@@ -20,20 +20,15 @@ import LayoutHeaderInfo from "./LayoutHeaderInfo.vue";
 		VIcon
 	},
 	props: {
-		title: {
-			type: String,
-			default: ""
-		},
+		title: String,
 		breadcrumbs: {
 			type: Array,
 			default: () => []
-		}
+		},
+		color: String
 	}
 })
 export default class LayoutHeader extends Vue {}
 </script>
 <style lang="scss" scoped>
-.layout-header {
-	background-color: transparent;
-}
 </style>

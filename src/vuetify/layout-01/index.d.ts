@@ -20,7 +20,10 @@ export interface LayoutMenuItem {
 	children?: LayoutMenuItem[];
 }
 
-export type LayoutConfig = {};
+export type LayoutConfig = {
+	drawerColor?: string;
+	headerColor?: string;
+};
 
 export const Layout: VueConstructor;
 export const LayoutManager: ILayoutManagerStatic;

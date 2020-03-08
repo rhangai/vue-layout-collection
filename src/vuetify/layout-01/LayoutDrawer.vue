@@ -3,6 +3,7 @@ v-hover(v-slot:default="{ hover }" close-delay="400")
 	v-navigation-drawer.layout-drawer(
 		:clipped="false"
 		:mini-variant="hover ? false : miniVariant"
+		:color="color"
 		permanent
 		app)
 		v-list
@@ -56,7 +57,8 @@ import {
 		items: {
 			type: Array,
 			default: () => []
-		}
+		},
+		color: String
 	}
 })
 export default class LayoutDrawer extends Vue {

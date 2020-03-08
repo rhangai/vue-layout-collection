@@ -1,8 +1,13 @@
 <template lang="pug">
 v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 	layout-manager-container(:layout-manager="layoutManager")
-	layout-drawer(:items="items")
-	layout-header(:title="title" :breadcrumbs="breadcrumbs")
+	layout-drawer(
+		:items="items" 
+		:color="normalizedConfig.drawerColor")
+	layout-header(
+		:title="title" 
+		:breadcrumbs="breadcrumbs"
+		:color="normalizedConfig.headerColor")
 		template(v-slot:actions="")
 			slot(name="header-actions")
 	v-content: v-container
@@ -62,6 +67,13 @@ export default class Layout extends Vue {
 		this.layoutManager = new LayoutManager(this);
 		// @ts-ignore
 		this[LayoutManagerSymbol] = this.layoutManager;
+	}
+
+	get normalizedConfig(): LayoutConfig {
+		const propConfig = this.config || {};
+		return {
+			...propConfig
+		};
 	}
 
 	get classes() {
