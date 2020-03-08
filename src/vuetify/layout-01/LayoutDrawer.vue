@@ -108,13 +108,13 @@ export default class LayoutDrawer extends Vue {
 
 .layout-drawer__top {
 	position: relative;
-	min-height: 56px;
+	min-height: 72px;
 	width: 256px;
 }
 
 .layout-drawer__pin-button {
 	position: absolute;
-	top: 1rem;
+	top: 1.5rem;
 	right: 1rem;
 }
 </style>
