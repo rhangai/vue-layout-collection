@@ -1,13 +1,8 @@
 <template lang="pug">
 v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 	layout-manager-container(:layout-manager="layoutManager")
-	layout-drawer(
-		:items="items" 
-		:color="normalizedConfig.drawerColor")
-	layout-header(
-		:title="title" 
-		:breadcrumbs="breadcrumbs"
-		:color="normalizedConfig.headerColor")
+	layout-drawer(v-bind="normalizedOptions.drawer")
+	layout-header(v-bind="normalizedOptions.header")
 		template(v-slot:actions="")
 			slot(name="header-actions")
 	v-content: v-container
@@ -19,9 +14,10 @@ import { VApp, VContent, VContainer } from "vuetify/lib";
 import { Scroll } from "vuetify/lib/directives";
 import LayoutHeader from "./LayoutHeader.vue";
 import LayoutDrawer from "./LayoutDrawer.vue";
-import { LayoutMenuItem, LayoutBreadcrumbItem, LayoutConfig } from "./index.d";
+import { LayoutConfig, LayoutOptions } from "./index.d";
 import { LayoutManagerSymbol, LayoutManager } from "../common/LayoutManager";
 import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
+import merge from "deepmerge";
 
 @Component<Layout>({
 	components: {
@@ -40,25 +36,16 @@ import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 			type: Object,
 			default: () => ({})
 		},
-		items: {
-			type: Array,
-			default: () => []
-		},
-		title: {
-			type: String,
-			default: () => ""
-		},
-		breadcrumbs: {
-			type: Array,
-			default: () => []
+		options: {
+			type: Object,
+			default: () => ({})
 		}
 	}
 })
 export default class Layout extends Vue {
 	config!: LayoutConfig;
-	items!: LayoutMenuItem;
-	title!: string;
-	breadcrumbs!: LayoutBreadcrumbItem[];
+	options!: LayoutOptions;
+
 	layoutManager!: LayoutManager;
 
 	isScrolled = false;
@@ -71,9 +58,16 @@ export default class Layout extends Vue {
 
 	get normalizedConfig(): LayoutConfig {
 		const propConfig = this.config || {};
-		return {
-			...propConfig
+		return merge({}, propConfig);
+	}
+
+	get normalizedOptions(): LayoutOptions {
+		const propOptions = this.options || {};
+		const defaultOptions: LayoutOptions = {
+			drawer: {},
+			header: {}
 		};
+		return merge(defaultOptions, propOptions);
 	}
 
 	get classes() {

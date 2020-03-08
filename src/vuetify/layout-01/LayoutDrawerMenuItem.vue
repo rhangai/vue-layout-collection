@@ -21,7 +21,7 @@ import {
 	VListItemTitle,
 	VIcon
 } from "vuetify/lib";
-import { LayoutMenuItem } from "./index.d";
+import { LayoutDrawerMenuItem } from "./index.d";
 
 @Component({
 	name: "layout-drawer-menu-item",
@@ -44,8 +44,8 @@ import { LayoutMenuItem } from "./index.d";
 		}
 	}
 })
-export default class LayoutDrawerMenuItem extends Vue {
-	item!: LayoutMenuItem;
+export default class LayoutDrawerMenuItemComponent extends Vue {
+	item!: LayoutDrawerMenuItem;
 	level!: number;
 
 	get classes() {

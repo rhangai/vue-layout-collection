@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Vue } from "@common/component";
 import { VIcon, VBreadcrumbs } from "vuetify/lib";
-import { LayoutBreadcrumbItem } from "./index.d";
+import { LayoutHeaderBreadcrumbItem } from "./index.d";
 
 @Component({
 	components: {
@@ -24,7 +24,7 @@ import { LayoutBreadcrumbItem } from "./index.d";
 	}
 })
 export default class LayoutBreadcrumbs extends Vue {
-	breadcrumbs!: LayoutBreadcrumbItem[];
+	breadcrumbs!: LayoutHeaderBreadcrumbItem[];
 
 	get items() {
 		return this.breadcrumbs.map(b => ({

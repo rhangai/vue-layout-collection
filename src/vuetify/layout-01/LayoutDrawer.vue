@@ -18,11 +18,12 @@ v-hover(v-slot:default="{ hover }" close-delay="400")
 				layout-drawer-menu-item(:item="item" :key="i")
 		v-spacer
 		v-list
-			layout-drawer-menu-item(:item="itemLogout")
+			template(v-for="(item, i) in itemsBottom")
+				layout-drawer-menu-item(:item="item" :key="i")
 </template>
 <script lang="ts">
-import { LayoutMenuItem } from "./index.d";
-import LayoutDrawerMenuItem from "./LayoutDrawerMenuItem.vue";
+import { LayoutDrawerMenuItem } from "./index.d";
+import LayoutDrawerMenuItemComponent from "./LayoutDrawerMenuItem.vue";
 import { Component, Vue } from "@common/component";
 import {
 	VNavigationDrawer,
@@ -40,7 +41,7 @@ import {
 
 @Component({
 	components: {
-		LayoutDrawerMenuItem,
+		LayoutDrawerMenuItem: LayoutDrawerMenuItemComponent,
 		VNavigationDrawer,
 		VList,
 		VListItem,
@@ -54,22 +55,22 @@ import {
 		VSpacer
 	},
 	props: {
+		color: String,
 		items: {
 			type: Array,
 			default: () => []
 		},
-		color: String
+		itemsBottom: {
+			type: Array,
+			default: () => []
+		}
 	}
 })
 export default class LayoutDrawer extends Vue {
 	miniVariant = true;
-	items!: LayoutMenuItem[];
-
-	itemLogout: LayoutMenuItem = {
-		title: "Sair",
-		icon: "mdi-exit-to-app",
-		to: "logout"
-	};
+	color!: string;
+	items!: LayoutDrawerMenuItemComponent[];
+	itemsBottom!: LayoutDrawerMenuItemComponent[];
 }
 </script>
 <style lang="scss" scoped>

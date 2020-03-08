@@ -1,28 +1,33 @@
 import { VueConstructor } from "vue";
 import { ILayoutManagerStatic } from "../common";
 
-export interface LayoutOptions {
-	title?: string;
-	breadcrumbs?: LayoutBreadcrumbItem[];
-}
-
-export interface LayoutBreadcrumbItem {
+export interface LayoutHeaderBreadcrumbItem {
 	text: string;
 	to?: string;
 	current?: boolean;
 }
 
-export interface LayoutMenuItem {
+export interface LayoutDrawerMenuItem {
 	title: string;
 	icon?: string;
 	to?: string;
 	href?: string;
-	children?: LayoutMenuItem[];
+	children?: LayoutDrawerMenuItem[];
 }
 
-export type LayoutConfig = {
-	drawerColor?: string;
-	headerColor?: string;
+export type LayoutConfig = {};
+
+export type LayoutOptions = {
+	drawer?: {
+		color?: string;
+		items?: LayoutDrawerMenuItem[];
+		itemsBottom?: LayoutDrawerMenuItem[];
+	};
+	header?: {
+		color?: string;
+		title?: string;
+		breadcrumbs?: LayoutHeaderBreadcrumbItem[];
+	};
 };
 
 export const Layout: VueConstructor;
