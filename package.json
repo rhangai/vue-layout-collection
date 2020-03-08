@@ -27,6 +27,7 @@
 		"rollup-plugin-terser": "^5.2.0",
 		"rollup-plugin-typescript2": "^0.26.0",
 		"rollup-plugin-vue": "^5.1.6",
+		"standard-version": "^7.1.0",
 		"tslib": "^1.11.1",
 		"typescript": "^3.8.3",
 		"vue": "^2.6.11",
@@ -39,6 +40,7 @@
 		"prebuild": "run-s clean",
 		"build": "gulp build",
 		"clean": "rimraf layout",
-		"prepare": "run-s build"
+		"prepare": "run-s build",
+		"release": "standard-version"
 	}
 }
