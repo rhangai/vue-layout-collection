@@ -38,6 +38,6 @@
 		"build": "gulp build",
 		"clean": "rimraf layout",
 		"prepack": "run-s build",
-		"prepare": "yarn install && run-s build && rimraf node_modules"
+		"prepare": "yarn install --ignore-scripts && run-s build && rimraf node_modules"
 	}
 }
