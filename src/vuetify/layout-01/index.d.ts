@@ -20,5 +20,7 @@ export interface LayoutMenuItem {
 	children?: LayoutMenuItem[];
 }
 
+export type LayoutConfig = {};
+
 export const Layout: VueConstructor;
 export const LayoutManager: ILayoutManagerStatic;

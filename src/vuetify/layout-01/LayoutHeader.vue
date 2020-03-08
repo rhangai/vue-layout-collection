@@ -33,4 +33,7 @@ import LayoutHeaderInfo from "./LayoutHeaderInfo.vue";
 export default class LayoutHeader extends Vue {}
 </script>
 <style lang="scss" scoped>
+.layout-header {
+	background-color: transparent;
+}
 </style>

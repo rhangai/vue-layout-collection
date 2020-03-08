@@ -14,7 +14,7 @@ import { VApp, VContent, VContainer } from "vuetify/lib";
 import { Scroll } from "vuetify/lib/directives";
 import LayoutHeader from "./LayoutHeader.vue";
 import LayoutDrawer from "./LayoutDrawer.vue";
-import { LayoutMenuItem, LayoutBreadcrumbItem } from "./index.d";
+import { LayoutMenuItem, LayoutBreadcrumbItem, LayoutConfig } from "./index.d";
 import { LayoutManagerSymbol, LayoutManager } from "../common/LayoutManager";
 import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 
@@ -31,6 +31,10 @@ import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 		Scroll
 	},
 	props: {
+		config: {
+			type: Object,
+			default: () => ({})
+		},
 		items: {
 			type: Array,
 			default: () => []
@@ -46,6 +50,7 @@ import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 	}
 })
 export default class Layout extends Vue {
+	config!: LayoutConfig;
 	items!: LayoutMenuItem;
 	title!: string;
 	breadcrumbs!: LayoutBreadcrumbItem[];
@@ -61,7 +66,7 @@ export default class Layout extends Vue {
 
 	get classes() {
 		return {
-			"layout-app--is-scrolled": this.isScrolled
+			"layout--is-scrolled": this.isScrolled
 		};
 	}
 
