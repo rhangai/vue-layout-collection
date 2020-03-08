@@ -2,11 +2,11 @@
 v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 	layout-manager-container(:layout-manager="layoutManager")
 	layout-drawer(v-bind="normalizedOptions.drawer")
-		template(v-slot:top="")
-			slot(name="drawer-top")
+		template(v-slot:top="props")
+			slot(name="drawer-top" v-bind="props")
 	layout-header(v-bind="normalizedOptions.header")
-		template(v-slot:actions="")
-			slot(name="header-actions")
+		template(v-slot:actions="props")
+			slot(name="header-actions" v-bind="props")
 	v-content: v-container
 		slot
 </template>
