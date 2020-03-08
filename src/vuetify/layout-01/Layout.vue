@@ -17,7 +17,7 @@ import LayoutDrawer from "./LayoutDrawer.vue";
 import { LayoutConfig, LayoutOptions } from "./index.d";
 import { LayoutManagerSymbol, LayoutManager } from "../common/LayoutManager";
 import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
-import merge from "deepmerge";
+const merge = require("deepmerge");
 
 @Component<Layout>({
 	components: {

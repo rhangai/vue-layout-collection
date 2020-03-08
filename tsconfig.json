@@ -10,6 +10,6 @@
 		"paths": {
 			"@common/*": ["./common/*"]
 		},
-		"types": ["vuetify/types/lib"]
+		"types": ["node", "vuetify/types/lib"]
 	}
 }
