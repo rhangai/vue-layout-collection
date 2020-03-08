@@ -11,18 +11,7 @@ async function buildRollup() {
 }
 
 async function buildCopyDeclarations() {
-	return src("src/**/*.d.ts")
-		.pipe(
-			rename(file => {
-				if (file.basename === "index.d") {
-					const newBasename = path.basename(file.dirname);
-					file.dirname = path.dirname(file.dirname);
-					file.basename = newBasename;
-					file.extname = ".d.ts";
-				}
-			})
-		)
-		.pipe(dest("layout"));
+	return src("src/**/*.d.ts").pipe(dest("layout"));
 }
 
 exports.build = series(buildRollup, buildCopyDeclarations);

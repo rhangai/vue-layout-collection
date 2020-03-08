@@ -5,7 +5,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import typescript from "rollup-plugin-typescript2";
 import vue from "rollup-plugin-vue";
 import virtual from "@rollup/plugin-virtual";
-import { terser } from "rollup-plugin-terser";
 import { pascalCase, pascalCaseTransformMerge } from "pascal-case";
 
 const LAYOUTS = [
@@ -66,33 +65,6 @@ function generateConfigModule(env, input, output, name, extraPlugins) {
 		]
 	};
 }
-/**
- *
- * @param {string} layoutDir
- */
-function generateConfigUMD(env, input, output, name, extraPlugins = null) {
-	if (typeof extraPlugins === "function") {
-		extraPlugins = extraPlugins();
-	}
-	return {
-		input,
-		external: ["vue", ...EXTERNALS],
-		output: {
-			name: name,
-			file: output,
-			format: "umd",
-			globals: { ...GLOBALS }
-		},
-		plugins: [
-			// Plugins
-			...plugins(),
-			...[].concat(extraPlugins).filter(Boolean),
-			terser({
-				output: { comments: false }
-			})
-		]
-	};
-}
 
 function configBundle(env) {
 	const bundleImports = [];
@@ -120,20 +92,16 @@ function configBundle(env) {
 		})
 	];
 	return [
-		generateConfigModule(env, input, `${outputBase}.js`, name, extraPlugins),
-		generateConfigUMD(env, input, `${outputBase}.umd.js`, name, extraPlugins)
+		generateConfigModule(env, input, `${outputBase}.js`, name, extraPlugins)
 	];
 }
 
 export default function(env) {
 	const configLayouts = LAYOUTS.map(layoutDir => {
 		const input = path.resolve(__dirname, "src", layoutDir, "index.ts");
-		const outputBase = path.resolve(__dirname, "layout", `${layoutDir}`);
+		const outputBase = path.resolve(__dirname, "layout", `${layoutDir}/index`);
 		const name = `VueLayout${getLayoutName(layoutDir)}`;
-		return [
-			generateConfigModule(env, input, `${outputBase}.js`, name),
-			generateConfigUMD(env, input, `${outputBase}.umd.js`, name)
-		];
+		return [generateConfigModule(env, input, `${outputBase}.js`, name)];
 	});
 
 	return [

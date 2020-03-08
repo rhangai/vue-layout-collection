@@ -1,7 +1,6 @@
 <template lang="pug">
 v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
-	//- layout-manager-snackbar
-	//- layout-manager-confirmacao
+	layout-manager-container(:layout-manager="layoutManager")
 	layout-drawer(:items="items")
 	layout-header(:title="title" :breadcrumbs="breadcrumbs")
 		template(v-slot:actions="")
@@ -9,7 +8,6 @@ v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 	v-content: v-container
 		slot
 </template>
-
 <script lang="ts">
 import { Component, Vue } from "@common/component";
 import { VApp, VContent, VContainer } from "vuetify/lib";
@@ -17,6 +15,8 @@ import { Scroll } from "vuetify/lib/directives";
 import LayoutHeader from "./LayoutHeader.vue";
 import LayoutDrawer from "./LayoutDrawer.vue";
 import { LayoutMenuItem, LayoutBreadcrumbItem } from "./index.d";
+import { LayoutManagerSymbol, LayoutManager } from "../common/LayoutManager";
+import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 
 @Component<Layout>({
 	components: {
@@ -24,7 +24,8 @@ import { LayoutMenuItem, LayoutBreadcrumbItem } from "./index.d";
 		VContent,
 		VContainer,
 		LayoutHeader,
-		LayoutDrawer
+		LayoutDrawer,
+		LayoutManagerContainer
 	},
 	directives: {
 		Scroll
@@ -48,8 +49,15 @@ export default class Layout extends Vue {
 	items!: LayoutMenuItem;
 	title!: string;
 	breadcrumbs!: LayoutBreadcrumbItem[];
+	layoutManager!: LayoutManager;
 
 	isScrolled = false;
+
+	created() {
+		this.layoutManager = new LayoutManager(this);
+		// @ts-ignore
+		this[LayoutManagerSymbol] = this.layoutManager;
+	}
 
 	get classes() {
 		return {

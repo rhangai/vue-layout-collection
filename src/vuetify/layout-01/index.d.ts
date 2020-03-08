@@ -1,4 +1,5 @@
-import Vue from "vue";
+import { VueConstructor } from "vue";
+import { ILayoutManagerStatic } from "../common";
 
 export interface LayoutOptions {
 	title?: string;
@@ -19,4 +20,5 @@ export interface LayoutMenuItem {
 	children?: LayoutMenuItem[];
 }
 
-export const Layout: Vue;
+export const Layout: VueConstructor;
+export const LayoutManager: ILayoutManagerStatic;
