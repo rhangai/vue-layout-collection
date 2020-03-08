@@ -37,6 +37,7 @@
 		"prebuild": "run-s clean",
 		"build": "gulp build",
 		"clean": "rimraf layout",
-		"prepack": "run-s build"
+		"prepack": "run-s build",
+		"prepare": "yarn install && run-s build && rimraf node_modules"
 	}
 }
