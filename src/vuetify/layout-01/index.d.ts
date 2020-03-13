@@ -12,6 +12,7 @@ export interface LayoutDrawerMenuItem {
 	icon?: string;
 	to?: string;
 	href?: string;
+	props?: { [key: string]: any };
 	children?: LayoutDrawerMenuItem[];
 }
 

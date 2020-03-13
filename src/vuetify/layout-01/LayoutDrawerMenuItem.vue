@@ -19,7 +19,7 @@ import {
 	VListItemAction,
 	VListItemContent,
 	VListItemTitle,
-	VIcon
+	VIcon,
 } from "vuetify/lib";
 import { LayoutDrawerMenuItem } from "./index.d";
 
@@ -31,18 +31,18 @@ import { LayoutDrawerMenuItem } from "./index.d";
 		VListItemAction,
 		VListItemContent,
 		VListItemTitle,
-		VIcon
+		VIcon,
 	},
 	props: {
 		item: {
 			type: Object,
-			required: true
+			required: true,
 		},
 		level: {
 			type: Number,
-			default: () => 1
-		}
-	}
+			default: () => 1,
+		},
+	},
 })
 export default class LayoutDrawerMenuItemComponent extends Vue {
 	item!: LayoutDrawerMenuItem;
@@ -62,15 +62,17 @@ export default class LayoutDrawerMenuItemComponent extends Vue {
 			}
 			return {
 				router: true,
-				to
+				to,
+				...this.item.props,
 			};
 		} else if (this.item.href) {
 			return {
 				link: true,
-				href: this.item.href
+				href: this.item.href,
+				...this.item.props,
 			};
 		}
-		return { link: true };
+		return { link: true, ...this.item.props };
 	}
 }
 </script>
