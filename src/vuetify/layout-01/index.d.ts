@@ -22,11 +22,13 @@ export type LayoutOptions = {
 		color?: string;
 		items?: LayoutDrawerMenuItem[];
 		itemsBottom?: LayoutDrawerMenuItem[];
+		props?: { [key: string]: any };
 	};
 	header?: {
 		color?: string;
 		title?: string;
 		breadcrumbs?: LayoutHeaderBreadcrumbItem[];
+		props?: { [key: string]: any };
 	};
 };
 

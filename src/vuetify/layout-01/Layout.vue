@@ -5,6 +5,8 @@ v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 		template(v-slot:top="props")
 			slot(name="drawer-top" v-bind="props")
 	layout-header(v-bind="normalizedOptions.header")
+		template(v-slot:info="props")
+			slot(name="header-info" v-bind="props")
 		template(v-slot:actions="props")
 			slot(name="header-actions" v-bind="props")
 	v-content: v-container

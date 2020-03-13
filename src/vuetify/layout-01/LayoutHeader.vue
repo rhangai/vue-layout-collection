@@ -1,6 +1,7 @@
 <template lang="pug">
-v-app-bar.layout-header(app fixed :color="color || 'transparent'")
-	layout-header-info(:title="title" :breadcrumbs="breadcrumbs")
+v-app-bar.layout-header(app fixed :color="color || 'transparent'" v-bind="props")
+	slot(name="info" :title="title" :breadcrumbs="breadcrumbs")
+		layout-header-info(:title="title" :breadcrumbs="breadcrumbs")
 	v-spacer
 	.layout-header__actions
 		slot(name="actions")
@@ -25,7 +26,8 @@ import LayoutHeaderInfo from "./LayoutHeaderInfo.vue";
 			type: Array,
 			default: () => []
 		},
-		color: String
+		color: String,
+		props: { type: Object, default: () => ({}) }
 	}
 })
 export default class LayoutHeader extends Vue {}

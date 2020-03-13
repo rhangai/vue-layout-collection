@@ -5,7 +5,8 @@ v-hover(v-slot:default="{ hover }" close-delay="400")
 		:mini-variant="hover ? false : miniVariant"
 		:color="color"
 		permanent
-		app)
+		app
+		v-bind="props")
 		.layout-drawer__top
 			slot(name="top" :mini="hover ? false : miniVariant")
 			v-btn.layout-drawer__pin-button(icon small @click="miniVariant = !miniVariant")
@@ -61,7 +62,8 @@ import {
 		itemsBottom: {
 			type: Array,
 			default: () => []
-		}
+		},
+		props: { type: Object, default: () => ({}) }
 	}
 })
 export default class LayoutDrawer extends Vue {
@@ -69,6 +71,7 @@ export default class LayoutDrawer extends Vue {
 	color!: string;
 	items!: LayoutDrawerMenuItemComponent[];
 	itemsBottom!: LayoutDrawerMenuItemComponent[];
+	props!: any;
 }
 </script>
 <style lang="scss" scoped>
