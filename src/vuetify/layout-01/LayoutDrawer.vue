@@ -35,7 +35,7 @@ import {
 	VHover,
 	VBtn,
 	VDivider,
-	VSpacer
+	VSpacer,
 } from "vuetify/lib";
 
 @Component({
@@ -51,20 +51,20 @@ import {
 		VHover,
 		VBtn,
 		VDivider,
-		VSpacer
+		VSpacer,
 	},
 	props: {
 		color: String,
 		items: {
 			type: Array,
-			default: () => []
+			default: () => [],
 		},
 		itemsBottom: {
 			type: Array,
-			default: () => []
+			default: () => [],
 		},
-		props: { type: Object, default: () => ({}) }
-	}
+		props: { type: Object, default: () => ({}) },
+	},
 })
 export default class LayoutDrawer extends Vue {
 	miniVariant = true;

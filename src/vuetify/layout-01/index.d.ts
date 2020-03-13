@@ -10,7 +10,7 @@ export interface LayoutHeaderBreadcrumbItem {
 export interface LayoutDrawerMenuItem {
 	title: string;
 	icon?: string;
-	to?: string;
+	to?: string | { [key: string]: any };
 	href?: string;
 	props?: { [key: string]: any };
 	children?: LayoutDrawerMenuItem[];
