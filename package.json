@@ -1,6 +1,6 @@
 {
 	"name": "@rhangai/vue-layout-collection",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Multiple Layout Components for Vue.js",
 	"main": "layout/index.umd.js",
 	"module": "layout/index.js",
