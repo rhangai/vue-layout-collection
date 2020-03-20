@@ -6,37 +6,33 @@ import typescript from "rollup-plugin-typescript2";
 import vue from "rollup-plugin-vue";
 import virtual from "@rollup/plugin-virtual";
 import { pascalCase, pascalCaseTransformMerge } from "pascal-case";
-
-const LAYOUTS = [
-	// Layout list
-	"vuetify/layout-01"
-];
+import { LAYOUTS } from "./src/build";
 
 const EXTERNALS = ["vue", "vuetify/lib", "vuetify/lib/directives"];
 
 const GLOBALS = {
 	vue: "Vue",
 	"vuetify/lib": "Vuetify",
-	"vuetify/lib/directives": "Vuefity"
+	"vuetify/lib/directives": "Vuefity",
 };
 
 const plugins = () => [
 	//
 	alias({
 		entries: [
-			{ find: "@common", replacement: path.resolve(__dirname, "src/common") }
-		]
+			{ find: "@common", replacement: path.resolve(__dirname, "src/common") },
+		],
 	}),
 	resolve({
-		extensions: [".ts", ".js"]
+		extensions: [".ts", ".js"],
 	}),
 	typescript(),
-	vue()
+	vue(),
 ];
 
 function getLayoutName(layout) {
 	const layoutCaseName = pascalCase(layout, {
-		transform: pascalCaseTransformMerge
+		transform: pascalCaseTransformMerge,
 	});
 	return layoutCaseName;
 }
@@ -56,13 +52,13 @@ function generateConfigModule(env, input, output, name, extraPlugins) {
 			name: name,
 			file: output,
 			format: "esm",
-			globals: { ...GLOBALS }
+			globals: { ...GLOBALS },
 		},
 		plugins: [
 			// Default plugins
 			...plugins(),
-			...[].concat(extraPlugins).filter(Boolean)
-		]
+			...[].concat(extraPlugins).filter(Boolean),
+		],
 	};
 }
 
@@ -87,12 +83,12 @@ function configBundle(env) {
 			"@rhangai/vue-layout-collection": [
 				...bundleImports,
 				"",
-				`export { ${bundleExports.join(",")} };`
-			].join("\n")
-		})
+				`export { ${bundleExports.join(",")} };`,
+			].join("\n"),
+		}),
 	];
 	return [
-		generateConfigModule(env, input, `${outputBase}.js`, name, extraPlugins)
+		generateConfigModule(env, input, `${outputBase}.js`, name, extraPlugins),
 	];
 }
 
@@ -108,6 +104,6 @@ export default function(env) {
 		// Each module
 		...configLayouts,
 		// Bundle
-		configBundle(env)
+		configBundle(env),
 	].flat();
 }
