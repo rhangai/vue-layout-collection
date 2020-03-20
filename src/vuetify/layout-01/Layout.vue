@@ -27,6 +27,17 @@ import { LayoutManagerSymbol, LayoutManager } from "../common/LayoutManager";
 import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 const merge = require("deepmerge");
 
+/**
+ * Usage
+ *
+ * ```ts
+ * import { Layout } from "@rhangai/vue-layout-collection/layout/vuetify/layout-01";
+ *
+ * export default {
+ *   components: { Layout }
+ * }
+ * ```
+ */
 @Component<Layout>({
 	components: {
 		VApp,
