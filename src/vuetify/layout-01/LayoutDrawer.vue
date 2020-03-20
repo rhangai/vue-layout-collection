@@ -1,24 +1,23 @@
 <template lang="pug">
-v-hover(v-slot:default="{ hover }" close-delay="400")
-	v-navigation-drawer.layout-drawer(
-		:clipped="false"
-		:mini-variant="hover ? false : miniVariant"
-		:color="color"
-		permanent
-		app
-		v-bind="props")
-		.layout-drawer__top
-			slot(name="top" :mini="hover ? false : miniVariant")
-			v-btn.layout-drawer__pin-button(icon small @click="miniVariant = !miniVariant")
-				v-icon(small) {{ miniVariant ? 'mdi-pin' : 'mdi-pin-off' }}
-		v-divider
-		v-list
-			template(v-for="(item, i) in items")
-				layout-drawer-menu-item(:item="item" :key="i")
-		v-spacer
-		v-list
-			template(v-for="(item, i) in itemsBottom")
-				layout-drawer-menu-item(:item="item" :key="i")
+v-navigation-drawer.layout-drawer(
+	app
+	:mini-variant="isSmall"
+	:clipped="false"
+	:expand-on-hover="isSmall"
+	permanent
+	fixed
+	:color="color"
+	v-bind="props")
+	.layout-drawer__top
+		slot(name="top" :mini="isSmall")
+	v-divider
+	v-list
+		template(v-for="(item, i) in items")
+			layout-drawer-menu-item(:item="item" :key="i")
+	v-spacer
+	v-list
+		template(v-for="(item, i) in itemsBottom")
+			layout-drawer-menu-item(:item="item" :key="i")
 </template>
 <script lang="ts">
 import { LayoutDrawerMenuItem } from "./index.d";
@@ -67,11 +66,14 @@ import {
 	},
 })
 export default class LayoutDrawer extends Vue {
-	miniVariant = true;
 	color!: string;
 	items!: LayoutDrawerMenuItemComponent[];
 	itemsBottom!: LayoutDrawerMenuItemComponent[];
 	props!: any;
+
+	get isSmall() {
+		return this.$vuetify.breakpoint.smAndDown;
+	}
 }
 </script>
 <style lang="scss" scoped>
