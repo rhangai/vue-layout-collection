@@ -3,13 +3,17 @@ v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 	layout-manager-container(:layout-manager="layoutManager")
 	layout-drawer(v-bind="normalizedOptions.drawer")
 		template(v-slot:top="props")
+			// @slot Top of the navigation drawer
 			slot(name="drawer-top" v-bind="props")
 	layout-header(v-bind="normalizedOptions.header")
 		template(v-slot:info="props")
+			// @slot Header info (Left side of header)
 			slot(name="header-info" v-bind="props")
 		template(v-slot:actions="props")
+			// @slot Header actions (Right side of header)
 			slot(name="header-actions" v-bind="props")
 	v-content: v-container
+		// @slot The content
 		slot
 </template>
 <script lang="ts">
@@ -18,7 +22,7 @@ import { VApp, VContent, VContainer } from "vuetify/lib";
 import { Scroll } from "vuetify/lib/directives";
 import LayoutHeader from "./LayoutHeader.vue";
 import LayoutDrawer from "./LayoutDrawer.vue";
-import { LayoutConfig, LayoutOptions } from "./index.d";
+import { LayoutOptions } from "./index.d";
 import { LayoutManagerSymbol, LayoutManager } from "../common/LayoutManager";
 import LayoutManagerContainer from "../common/LayoutManagerContainer.vue";
 const merge = require("deepmerge");
@@ -30,24 +34,29 @@ const merge = require("deepmerge");
 		VContainer,
 		LayoutHeader,
 		LayoutDrawer,
-		LayoutManagerContainer
+		LayoutManagerContainer,
 	},
 	directives: {
-		Scroll
+		Scroll,
 	},
 	props: {
-		config: {
-			type: Object,
-			default: () => ({})
-		},
+		/**
+		 * Options
+		 *
+		 * - `drawer.color`: Color of the drawer
+		 * - `drawer.items`: Items on the drawer menu
+		 * - `drawer.itemsBottom`: Items on the drawer menu bottom
+		 * - `drawer.props`: Props to pass directly to the drawer
+		 * - `header.color`: Color of the header
+		 * - `header.props`: Props to pass directly to the drawer
+		 */
 		options: {
 			type: Object,
-			default: () => ({})
-		}
-	}
+			default: () => ({}),
+		},
+	},
 })
 export default class Layout extends Vue {
-	config!: LayoutConfig;
 	options!: LayoutOptions;
 
 	layoutManager!: LayoutManager;
@@ -60,16 +69,11 @@ export default class Layout extends Vue {
 		this[LayoutManagerSymbol] = this.layoutManager;
 	}
 
-	get normalizedConfig(): LayoutConfig {
-		const propConfig = this.config || {};
-		return merge({}, propConfig);
-	}
-
 	get normalizedOptions(): LayoutOptions {
 		const propOptions = this.options || {};
 		const defaultOptions: LayoutOptions = {
 			drawer: {},
-			header: {}
+			header: {},
 		};
 		return merge(defaultOptions, propOptions);
 	}
@@ -77,7 +81,7 @@ export default class Layout extends Vue {
 	get classes() {
 		return {
 			"layout--is-not-scrolled": !this.isScrolled,
-			"layout--is-scrolled": this.isScrolled
+			"layout--is-scrolled": this.isScrolled,
 		};
 	}
 

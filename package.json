@@ -16,6 +16,7 @@
 		"@rollup/plugin-node-resolve": "^7.1.1",
 		"@rollup/plugin-typescript": "^4.0.0",
 		"@rollup/plugin-virtual": "^2.0.1",
+		"@storybook/addon-docs": "^5.3.17",
 		"@storybook/vue": "^5.3.17",
 		"@types/node": "^13.9.0",
 		"babel-loader": "^8.1.0",
@@ -52,7 +53,9 @@
 		"clean": "rimraf layout",
 		"prepare": "run-s build",
 		"release": "standard-version",
+		"predeploy:pages": "run-s storybook:build",
+		"deploy:pages": "gh-pages -d build/storybook",
 		"storybook": "start-storybook",
-		"storybook:build": "build-storybook -c .storybook -o build/storybook"
+		"storybook:build": "build-storybook --docs -c .storybook -o build/storybook"
 	}
 }

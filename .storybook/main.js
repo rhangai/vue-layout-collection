@@ -1,7 +1,8 @@
 const path = require("path");
 
 module.exports = {
-	stories: ["../src/**/*.stories.[tj]s"],
+	stories: ["../src/**/*.stories.(ts|mdx)"],
+	addons: ["@storybook/addon-docs"],
 	webpackFinal: async config => {
 		config.module.rules.push({
 			test: /\.(ts|tsx)$/,

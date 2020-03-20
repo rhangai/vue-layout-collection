@@ -24,12 +24,48 @@ const DRAWER_ITEMS_BOTTOM = [
 ];
 
 export default {
-	title: "Layout01",
+	title: "Vuetify/Layout01",
 	component: Layout,
 	decorators: [WithVuetify()],
 };
 
-export const Default = () => ({
+export const CompleteExample = () => ({
+	components: { Layout },
+	data: () => ({
+		layoutOptions: {
+			header: {
+				color: "primary",
+				dark: true,
+			},
+			drawer: {
+				color: "secondary",
+				items: DRAWER_ITEMS,
+				itemsBottom: DRAWER_ITEMS_BOTTOM,
+				props: {
+					dark: true,
+				},
+			},
+		},
+	}),
+	template: `
+		<layout :options="layoutOptions">
+			<template v-slot:header-info>
+				Header Slot
+			</template>
+			<template v-slot:drawer-top>
+				<v-list>
+					<v-list-item>
+						<v-list-item-action><v-icon>mdi-home</v-icon></v-list-item-action>
+						<v-list-item-content>Drawer Slot</v-list-item-content>
+					</v-list-item>
+				</v-list>
+			</template>
+			Content
+		</layout>
+	`,
+});
+
+export const ThemeDefault = () => ({
 	components: { Layout },
 	data: () => ({
 		layoutOptions: {
@@ -65,42 +101,6 @@ export const ThemeDark = () => ({
 	}),
 	template: `
 		<layout :options="layoutOptions">
-			Content
-		</layout>
-	`,
-});
-
-export const Complete = () => ({
-	components: { Layout },
-	data: () => ({
-		layoutOptions: {
-			header: {
-				color: "primary",
-				dark: true,
-			},
-			drawer: {
-				color: "secondary",
-				items: DRAWER_ITEMS,
-				itemsBottom: DRAWER_ITEMS_BOTTOM,
-				props: {
-					dark: true,
-				},
-			},
-		},
-	}),
-	template: `
-		<layout :options="layoutOptions">
-			<template v-slot:header-info>
-				Header Slot
-			</template>
-			<template v-slot:drawer-top>
-				<v-list>
-					<v-list-item>
-						<v-list-item-action><v-icon>mdi-home</v-icon></v-list-item-action>
-						<v-list-item-content>Drawer Slot</v-list-item-content>
-					</v-list-item>
-				</v-list>
-			</template>
 			Content
 		</layout>
 	`,
