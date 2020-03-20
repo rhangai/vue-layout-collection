@@ -54,7 +54,7 @@
 		"clean": "rimraf layout",
 		"prepare": "run-s build",
 		"version": "standard-version",
-		"release": "run-s deploy:pages version",
+		"release": "run-s 'deploy:pages' 'version {@}' --",
 		"predeploy:pages": "run-s storybook:build",
 		"deploy:pages": "gh-pages -d build/storybook",
 		"storybook": "start-storybook",
