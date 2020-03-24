@@ -1,9 +1,11 @@
 const path = require("path");
+const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 
 module.exports = {
 	stories: ["../src/**/*.stories.(ts|mdx)"],
 	addons: ["@storybook/addon-docs"],
 	webpackFinal: async config => {
+		config.plugins.unshift(new VuetifyLoaderPlugin());
 		config.module.rules.push({
 			test: /\.(ts|tsx)$/,
 			use: [
