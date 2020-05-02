@@ -9,8 +9,9 @@ v-app.layout.layout-vuetify-layout-01(dark :class="classes" v-scroll="onScroll")
 			slot(name="header-info" v-bind="props")
 		template(v-slot:actions="props")
 			slot(name="header-actions" v-bind="props")
-	v-content: v-container
-		slot
+	v-content
+		v-container(:fluid="normalizedOptions.containerFluid")
+			slot
 </template>
 <script lang="ts">
 import { Component, Vue } from "@common/component";
@@ -68,6 +69,7 @@ export default class Layout extends Vue {
 	get normalizedOptions(): LayoutOptions {
 		const propOptions = this.options || {};
 		const defaultOptions: LayoutOptions = {
+			containerFluid: false,
 			drawer: {},
 			header: {}
 		};

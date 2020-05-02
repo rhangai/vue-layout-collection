@@ -19,6 +19,7 @@ export interface LayoutDrawerMenuItem {
 export type LayoutConfig = {};
 
 export type LayoutOptions = {
+	containerFluid: Boolean,
 	drawer?: {
 		color?: string;
 		items?: LayoutDrawerMenuItem[];
