@@ -2,8 +2,8 @@ import Vue from "vue";
 import {
 	ILayoutManager,
 	LayoutManagerSnackbar,
-	LayoutManagerDialogConfirmation
-} from "../common";
+	LayoutManagerDialogConfirmation,
+} from "../common.d";
 
 export type LayoutManagerHandlers = {
 	snackbar: (snackbar: LayoutManagerSnackbar) => Promise<void>;

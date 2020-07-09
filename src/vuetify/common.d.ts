@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue, { VueConstructor } from "vue";
 
 export type LayoutManagerSnackbar = {
 	message: string;
@@ -21,3 +21,7 @@ export interface ILayoutManager {
 export interface ILayoutManagerStatic {
 	find(vm: Vue): ILayoutManager;
 }
+
+export const LayoutManager: ILayoutManagerStatic;
+export const LayoutManagerMixin: VueConstructor;
+export const LayoutManagerContainer: VueConstructor;
