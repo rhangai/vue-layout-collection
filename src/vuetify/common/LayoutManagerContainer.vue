@@ -8,7 +8,8 @@ div
 			v-bind="snackbar.item.$props"
 		) 
 			| {{ snackbar.item.message }}
-			v-btn(@click="snackbar.resolve()" text) Fechar
+			template(v-slot:action="{ attrs }")
+				v-btn(v-bind="{ ...attrs, ...snackbar.item.$buttonProps }" @click="snackbar.resolve()" text) {{ snackbar.item.action || 'Fechar' }}
 
 	template(v-for="dialog in dialogs")
 		v-dialog(
