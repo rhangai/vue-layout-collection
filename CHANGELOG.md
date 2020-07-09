@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/rhangai/vue-layout-collection/compare/v0.2.2...v0.2.3) (2020-07-09)
+
+
+### Bug Fixes
+
+* Button layout on snackbar ([f80bcae](https://github.com/rhangai/vue-layout-collection/commit/f80bcae60efac5777b361fc3803ef02c9a8b8fc9))
+
 ### [0.2.2](https://github.com/rhangai/vue-layout-collection/compare/v0.2.1...v0.2.2) (2020-07-09)
 
 ### [0.2.1](https://github.com/rhangai/vue-layout-collection/compare/v0.2.0...v0.2.1) (2020-05-02)
