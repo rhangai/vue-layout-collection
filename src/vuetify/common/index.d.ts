@@ -3,6 +3,7 @@ import Vue, { VueConstructor } from "vue";
 export type LayoutManagerSnackbar = {
 	message: string;
 	$props?: Record<string, any>;
+	$buttonProps?: Record<string, any>;
 };
 
 export type LayoutManagerDialogConfirmation = {
