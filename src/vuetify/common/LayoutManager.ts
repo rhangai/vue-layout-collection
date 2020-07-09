@@ -3,7 +3,7 @@ import {
 	ILayoutManager,
 	LayoutManagerSnackbar,
 	LayoutManagerDialogConfirmation,
-} from "../common.d";
+} from "./index.d";
 
 export type LayoutManagerHandlers = {
 	snackbar: (snackbar: LayoutManagerSnackbar) => Promise<void>;

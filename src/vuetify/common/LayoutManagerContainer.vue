@@ -37,8 +37,8 @@ import { Vue, Component } from "@common/component";
 import { LayoutManagerSymbol, LayoutManager } from "./LayoutManager";
 import {
 	LayoutManagerSnackbar,
-	LayoutManagerDialogConfirmation
-} from "../common";
+	LayoutManagerDialogConfirmation,
+} from "./index.d";
 import {
 	VDialog,
 	VBtn,
@@ -47,7 +47,7 @@ import {
 	VCardText,
 	VCardActions,
 	VSpacer,
-	VSnackbar
+	VSnackbar,
 } from "vuetify/lib";
 
 type LayoutManagerContainerListItem<ItemType> = {
@@ -69,14 +69,14 @@ type LayoutManagerContainerList<T> = Array<LayoutManagerContainerListItem<T>>;
 		VCardText,
 		VCardActions,
 		VSpacer,
-		VSnackbar
+		VSnackbar,
 	},
 	props: {
 		layoutManager: {
 			type: Object,
-			required: true
-		}
-	}
+			required: true,
+		},
+	},
 })
 export default class LayoutManagerContainer extends Vue {
 	layoutManager!: LayoutManager;
@@ -86,7 +86,7 @@ export default class LayoutManagerContainer extends Vue {
 	created() {
 		this.layoutManager.setHandlers({
 			snackbar: snackbar => this.snackbar(snackbar),
-			dialogConfirmation: confirmation => this.dialogConfirmation(confirmation)
+			dialogConfirmation: confirmation => this.dialogConfirmation(confirmation),
 		});
 	}
 
@@ -127,7 +127,7 @@ export default class LayoutManagerContainer extends Vue {
 			},
 			onInput: (visible: boolean) => {
 				if (!visible) listItem.resolve(cancelValue);
-			}
+			},
 		};
 		const listItemPromise = new Promise<ResultType>((resolve, reject) => {
 			// @ts-ignore
