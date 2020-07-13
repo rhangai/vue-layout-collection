@@ -37,7 +37,7 @@
 		"rollup-plugin-vue": "^5.1.6",
 		"sass": "^1.26.3",
 		"sass-loader": "^8.0.2",
-		"standard-version": "^7.1.0",
+		"standard-version": "^8.0.1",
 		"ts-loader": "^6.2.1",
 		"tslib": "^1.11.1",
 		"typescript": "^3.8.3",
